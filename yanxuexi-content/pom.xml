@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.yanxuexi</groupId>
+		<artifactId>yanxuexi-parent</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>../yanxuexi-parent/pom.xml</relativePath>
+	</parent>
+	<artifactId>yanxuexi-content</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>yanxuexi-content</name>
+	<description>yanxuexi-content</description>
+	<packaging>pom</packaging>
+
+	<modules>
+		<module>yanxuexi-content-api</module>
+		<module>yanxuexi-content-model</module>
+		<module>yanxuexi-content-service</module>
+	</modules>
+
+</project>

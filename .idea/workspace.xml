@@ -4,13 +4,29 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="567dc600-1f4f-4a3e-bb99-41b1191050ff" name="Changes" comment="基础工程中补充依赖配置" />
+    <list default="true" id="567dc600-1f4f-4a3e-bb99-41b1191050ff" name="Changes" comment="基础工程依赖配置中去掉重复依赖">
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yanxuexi-base/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/yanxuexi-base/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yanxuexi-parent/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/yanxuexi-parent/pom.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="dev01" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -36,22 +52,37 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "jdk.selected.JAVA_MODULE": "17",
-    "last_opened_file_path": "D:/Develop/Java/project/encyclopedia",
+    "last_opened_file_path": "D:/Develop/Java/project/YanXueXi/yanxuexi-content",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
+    "project.structure.side.proportion": "0.30574712",
     "settings.editor.selected.configurable": "preferences.fileTypes",
     "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
+    ]
   }
 }]]></component>
+  <component name="RunManager">
+    <configuration name="YanxuexiContentApiApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="yanxuexi-content-api" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.yanxuexi.YanxuexiContentApiApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -61,7 +92,7 @@
       <option name="presentableId" value="Default" />
       <updated>1718183522263</updated>
       <workItem from="1718183523317" duration="2252000" />
-      <workItem from="1718194273386" duration="8096000" />
+      <workItem from="1718194273386" duration="18798000" />
     </task>
     <task id="LOCAL-00001" summary="修改.gitignore文件，将不需要版本控制的文件添加到.gitignore文件中">
       <option name="closed" value="true" />
@@ -87,7 +118,15 @@
       <option name="project" value="LOCAL" />
       <updated>1718203539864</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="基础工程依赖配置中去掉重复依赖">
+      <option name="closed" value="true" />
+      <created>1718267439360</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1718267439360</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -98,7 +137,24 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="CUSTOM_BOOLEAN_PROPERTIES">
+                <map>
+                  <entry key="Show.Git.Branches" value="true" />
+                </map>
+              </option>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/dev01" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -108,6 +164,7 @@
     <MESSAGE value="修改.gitignore文件，将不需要版本控制的文件添加到.gitignore文件中" />
     <MESSAGE value="创建父工程和基础工程，并配置pom.xml文件" />
     <MESSAGE value="基础工程中补充依赖配置" />
-    <option name="LAST_COMMIT_MESSAGE" value="基础工程中补充依赖配置" />
+    <MESSAGE value="基础工程依赖配置中去掉重复依赖" />
+    <option name="LAST_COMMIT_MESSAGE" value="基础工程依赖配置中去掉重复依赖" />
   </component>
 </project>

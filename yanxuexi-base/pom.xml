@@ -7,7 +7,7 @@
 		<artifactId>yanxuexi-parent</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 		<!-- 基于当前pom.xml文件找到父工程-->
-		<relativePath>..\yanxuexi-parent</relativePath> <!-- lookup parent from repository -->
+		<relativePath>../yanxuexi-parent/pom.xml</relativePath> <!-- lookup parent from repository -->
 	</parent>
 	<artifactId>yanxuexi-base</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
@@ -85,7 +85,7 @@
 		</dependency>
 		<dependency>
 			<groupId>com.fasterxml.jackson.datatype</groupId>
-			<artifactId>jackson-datatype-jdk17</artifactId>
+			<artifactId>jackson-datatype-jdk8</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>com.fasterxml.jackson.datatype</groupId>
