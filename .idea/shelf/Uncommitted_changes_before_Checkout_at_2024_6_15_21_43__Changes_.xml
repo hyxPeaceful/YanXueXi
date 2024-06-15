@@ -1,0 +1,304 @@
+<changelist name="Uncommitted_changes_before_Checkout_at_2024_6_15_21_43_[Changes]" date="1718459067423" recycled="true" deleted="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2024_6_15_21_43_[Changes]/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Checkout at 2024/6/15 21:43 [Changes]" />
+  <binary>
+    <option name="BEFORE_PATH" value="yanxuexi-generator/target/classes/com/yanxuexi/generator/MessageCodeGenerator.class" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="yanxuexi-content/yanxuexi-content-model/target/classes/com/yanxuexi/content/model/po/CourseCategory.class" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="yanxuexi-generator/target/classes/com/yanxuexi/content/mapper/CourseCategoryMapper.class" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="yanxuexi-content/yanxuexi-content-model/target/classes/com/yanxuexi/content/model/po/CoursePublishPre.class" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="yanxuexi-generator/target/classes/com/yanxuexi/content/controller/TeachplanController.class" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="yanxuexi-generator/target/classes/com/yanxuexi/content/service/impl/CourseCategoryServiceImpl.class" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="yanxuexi-generator/target/classes/com/yanxuexi/content/service/impl/CoursePublishServiceImpl.class" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="yanxuexi-generator/target/classes/com/yanxuexi/content/service/impl/CourseMarketServiceImpl.class" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="yanxuexi-generator/target/classes/com/yanxuexi/content/service/CoursePublishService.class" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="yanxuexi-generator/target/classes/com/yanxuexi/content/mapper/CoursePublishPreMapper.class" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="yanxuexi-generator/target/classes/com/yanxuexi/content/service/CoursePublishPreService.class" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="yanxuexi-generator/target/classes/com/yanxuexi/generator/UcenterCodeGenerator.class" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="yanxuexi-generator/target/classes/com/yanxuexi/content/service/impl/CourseBaseServiceImpl.class" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="yanxuexi-generator/target/classes/com/yanxuexi/content/service/CourseCategoryService.class" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="yanxuexi-generator/target/classes/com/yanxuexi/content/controller/CourseMarketController.class" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="yanxuexi-generator/target/classes/com/yanxuexi/generator/BankCodeGenerator.class" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="yanxuexi-generator/target/classes/com/yanxuexi/content/service/TeachplanMediaService.class" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="yanxuexi-generator/target/classes/com/yanxuexi/content/mapper/CourseMarketMapper.class" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="yanxuexi-generator/target/classes/com/yanxuexi/content/service/TeachplanService.class" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="yanxuexi-generator/target/classes/com/yanxuexi/content/service/impl/CoursePublishPreServiceImpl.class" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="yanxuexi-generator/target/classes/com/yanxuexi/content/service/CourseBaseService.class" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="yanxuexi-generator/target/classes/com/yanxuexi/content/controller/TeachplanMediaController.class" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="yanxuexi-generator/target/classes/com/yanxuexi/content/model/po/CoursePublish.class" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="yanxuexi-generator/target/classes/com/yanxuexi/content/model/po/CourseTeacher.class" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="yanxuexi-generator/target/classes/com/yanxuexi/content/service/CourseMarketService.class" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="yanxuexi-generator/target/classes/com/yanxuexi/content/service/CourseTeacherService.class" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="yanxuexi-generator/target/classes/com/yanxuexi/content/controller/CoursePublishPreController.class" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="yanxuexi-generator/target/classes/com/yanxuexi/content/model/po/CourseMarket.class" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="yanxuexi-generator/target/classes/com/yanxuexi/content/controller/CourseTeacherController.class" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="yanxuexi-generator/target/classes/com/yanxuexi/content/mapper/CoursePublishMapper.class" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="yanxuexi-generator/target/classes/com/yanxuexi/content/service/impl/TeachplanMediaServiceImpl.class" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="yanxuexi-generator/target/classes/com/yanxuexi/generator/SystemCodeGenerator.class" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="yanxuexi-generator/target/classes/com/yanxuexi/content/mapper/CourseTeacherMapper.class" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="yanxuexi-generator/target/classes/com/yanxuexi/generator/LearningCodeGenerator.class" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="yanxuexi-generator/target/classes/com/yanxuexi/generator/OrderCodeGenerator.class" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="yanxuexi-content/yanxuexi-content-api/target/classes/com/yanxuexi/ContentApplication.class" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="yanxuexi-content/yanxuexi-content-model/target/classes/com/yanxuexi/content/model/po/CourseMarket.class" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="yanxuexi-generator/target/classes/com/yanxuexi/generator/MediaCodeGenerator.class" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="yanxuexi-content/yanxuexi-content-model/target/classes/com/yanxuexi/content/model/po/Teachplan.class" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="yanxuexi-generator/target/classes/com/yanxuexi/content/model/po/CoursePublishPre.class" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="yanxuexi-generator/target/classes/com/yanxuexi/content/controller/CourseBaseController.class" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="yanxuexi-generator/target/classes/com/yanxuexi/content/model/po/Teachplan.class" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="yanxuexi-content/yanxuexi-content-api/target/classes/com/yanxuexi/content/api/CourseBaseInfoController.class" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="yanxuexi-content/yanxuexi-content-model/target/classes/com/yanxuexi/content/model/dto/QueryCourseParamsDto.class" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="yanxuexi-content/yanxuexi-content-model/target/classes/com/yanxuexi/content/model/po/TeachplanMedia.class" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="yanxuexi-generator/target/classes/com/yanxuexi/content/model/po/CourseBase.class" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="yanxuexi-generator/target/classes/com/yanxuexi/content/service/impl/CourseTeacherServiceImpl.class" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="yanxuexi-generator/target/classes/com/yanxuexi/content/mapper/TeachplanMediaMapper.class" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="yanxuexi-generator/target/classes/com/yanxuexi/content/model/po/CourseCategory.class" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="yanxuexi-generator/target/classes/com/yanxuexi/content/controller/CourseCategoryController.class" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="yanxuexi-generator/target/classes/com/yanxuexi/content/mapper/TeachplanMapper.class" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="yanxuexi-content/yanxuexi-content-model/target/classes/com/yanxuexi/content/model/po/CoursePublish.class" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="yanxuexi-generator/target/classes/com/yanxuexi/content/model/po/TeachplanMedia.class" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="yanxuexi-content/yanxuexi-content-model/target/classes/com/yanxuexi/content/model/po/CourseBase.class" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="yanxuexi-content/yanxuexi-content-model/target/classes/com/yanxuexi/content/model/po/CourseTeacher.class" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="yanxuexi-generator/target/classes/com/yanxuexi/content/mapper/CourseBaseMapper.class" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="yanxuexi-generator/target/classes/com/yanxuexi/content/controller/CoursePublishController.class" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="yanxuexi-generator/target/classes/com/yanxuexi/content/service/impl/TeachplanServiceImpl.class" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="yanxuexi-generator/target/classes/com/yanxuexi/generator/CommonCodeGenerator.class" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="yanxuexi-generator/target/classes/com/yanxuexi/generator/ContentCodeGenerator.class" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+</changelist>

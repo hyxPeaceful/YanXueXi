@@ -4,22 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="567dc600-1f4f-4a3e-bb99-41b1191050ff" name="Changes" comment="基础工程依赖配置中去掉重复依赖">
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2024_6_15_21_43_[Changes]/shelved.patch" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yanxuexi-content/target/classes/bootstrap.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yanxuexi-content/target/classes/com/yanxuexi/content/model/dto/QueryCourseParamsDto.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yanxuexi-content/target/classes/com/yanxuexi/content/model/po/CourseBase.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yanxuexi-content/target/classes/com/yanxuexi/content/model/po/CourseCategory.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yanxuexi-content/target/classes/com/yanxuexi/content/model/po/CourseMarket.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yanxuexi-content/target/classes/com/yanxuexi/content/model/po/CoursePublish.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yanxuexi-content/target/classes/com/yanxuexi/content/model/po/CoursePublishPre.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yanxuexi-content/target/classes/com/yanxuexi/content/model/po/CourseTeacher.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yanxuexi-content/target/classes/com/yanxuexi/content/model/po/Teachplan.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yanxuexi-content/target/classes/com/yanxuexi/content/model/po/TeachplanMedia.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yanxuexi-content/target/classes/log4j2-dev.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+    <list default="true" id="567dc600-1f4f-4a3e-bb99-41b1191050ff" name="Changes" comment="1.使用Mybatis-plus 生成PO类，即持久对象（昨天的工作，忘记commit了）&#10;2.课程基本信息查询接口设计&#10;2.1 构建分页参数封装类&#10;2.2 构建分页查询返回结果封装类&#10;2.3 构建课程基本信息查询条件模型类&#10;2.4 解决 spring boot 和 JDK 版本不一致问题&#10;2.5 解决 spring boot 和 Swagger 版本不一致问题&#10;2.6 解决 spring boot 启动时，无法读取bootstrap配置文件的问题">
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/6318ae08-e3be-46d9-bb10-50a9b6972f78.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/6318ae08-e3be-46d9-bb10-50a9b6972f78.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yanxuexi-content/yanxuexi-content-model/src/test/java/com/yanxuexi/YanxuexiContentModelApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/info.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/info.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,7 +25,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="dev-2024-6-14" />
+        <entry key="$PROJECT_DIR$" value="dev-2024-6-15" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -75,7 +64,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "true",
-    "git-widget-placeholder": "dev-2024-6-15",
+    "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "jdk.selected.JAVA_MODULE": "17",
     "last_opened_file_path": "D:/Develop/Java/project/YanXueXi/yanxuexi-content/yanxuexi-content-model/src/main/java/com/yanxuexi/content/model/po",
@@ -88,7 +77,7 @@
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.30574712",
     "settings.editor.selected.configurable": "MavenSettings",
-    "spring.configuration.checksum": "fc1316bfa1552d3038a34215d31bb5c4",
+    "spring.configuration.checksum": "0c84f77bf2c60de8a131ac6a1389dd38",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -147,9 +136,9 @@
       <list>
         <item itemvalue="Spring Boot.ContentApplication" />
         <item itemvalue="Application.ContentCodeGenerator" />
-        <item itemvalue="Application.ContentCodeGenerator" />
         <item itemvalue="Spring Boot.ContentApplication" />
         <item itemvalue="Application.ContentCodeGenerator" />
+        <item itemvalue="Spring Boot.ContentApplication" />
       </list>
     </recent_temporary>
   </component>
@@ -170,6 +159,7 @@
       <workItem from="1718443851317" duration="2399000" />
       <workItem from="1718446444669" duration="1249000" />
       <workItem from="1718447703538" duration="9332000" />
+      <workItem from="1718459933271" duration="507000" />
     </task>
     <task id="LOCAL-00001" summary="修改.gitignore文件，将不需要版本控制的文件添加到.gitignore文件中">
       <option name="closed" value="true" />
@@ -211,13 +201,36 @@
       <option name="project" value="LOCAL" />
       <updated>1718285626858</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="1.使用Mybatis-plus 生成PO类，即持久对象（昨天的工作，忘记commit了）&#10;2.课程基本信息查询接口设计&#10;2.1 构建分页参数封装类&#10;2.2 构建分页查询返回结果封装类&#10;2.3 构建课程基本信息查询条件模型类&#10;2.4 解决 spring boot 和 JDK 版本不一致问题&#10;2.5 解决 spring boot 和 Swagger 版本不一致问题&#10;2.6 解决 spring boot 启动时，无法读取bootstrap配置文件的问题">
+      <option name="closed" value="true" />
+      <created>1718459304601</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1718459304601</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="dev-2024-6-15" />
+                </option>
+              </RecentGroup>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
@@ -226,17 +239,6 @@
               <option name="CUSTOM_BOOLEAN_PROPERTIES">
                 <map>
                   <entry key="Show.Git.Branches" value="true" />
-                </map>
-              </option>
-              <option name="FILTERS">
-                <map>
-                  <entry key="branch">
-                    <value>
-                      <list>
-                        <option value="main" />
-                      </list>
-                    </value>
-                  </entry>
                 </map>
               </option>
             </State>
