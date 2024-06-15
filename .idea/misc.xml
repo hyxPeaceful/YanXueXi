@@ -11,12 +11,8 @@
         <option value="$PROJECT_DIR$/yanxuexi-content/pom.xml" />
         <option value="$PROJECT_DIR$/yanxuexi-content/yanxuexi-content-service/pom.xml" />
         <option value="$PROJECT_DIR$/yanxuexi-content/yanxuexi-content-api/pom.xml" />
+        <option value="$PROJECT_DIR$/yanxuexi-generator/pom.xml" />
       </list>
-    </option>
-    <option name="ignoredFiles">
-      <set>
-        <option value="$PROJECT_DIR$/yanxuexi-content/yanxuexi-content-api/pom.xml" />
-      </set>
     </option>
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_17" project-jdk-name="17" project-jdk-type="JavaSDK">

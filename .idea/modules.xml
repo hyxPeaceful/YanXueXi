@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/YanXueXi.iml" filepath="$PROJECT_DIR$/.idea/YanXueXi.iml" />
+      <module fileurl="file://$PROJECT_DIR$/yanxuexi-generator/yanxuexi-generator.iml" filepath="$PROJECT_DIR$/yanxuexi-generator/yanxuexi-generator.iml" />
     </modules>
   </component>
 </project>
