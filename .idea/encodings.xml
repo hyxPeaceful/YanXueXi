@@ -6,10 +6,13 @@
     <file url="file://$PROJECT_DIR$/yanxuexi-content/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/yanxuexi-content/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/yanxuexi-content/yanxuexi-content-api/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/yanxuexi-content/yanxuexi-content-api/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/yanxuexi-content/yanxuexi-content-model/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/yanxuexi-content/yanxuexi-content-model/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/yanxuexi-content/yanxuexi-content-service/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/yanxuexi-content/yanxuexi-content-service/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/yanxuexi-generator/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/yanxuexi-generator/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/yanxuexi-parent/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/yanxuexi-parent/src/main/resources" charset="UTF-8" />
   </component>

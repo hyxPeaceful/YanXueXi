@@ -1,0 +1,22 @@
+server:
+  servlet:
+    context-path: /content
+  port: 63040
+
+#微服务配置
+spring:
+  application:
+    name: content-api
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.101.65:3306/yanxuexi_content?serverTimezone=UTC&userUnicode=true&useSSL=false&
+    username: root
+    password: mysql
+  # 下面的配置解决了 swagger 3.0（老版本2.0 swagger 无法在 spring boot 2.6 版本之上使用） 和 spring boot 2.7.17 一起使用时产生的问题。 参考链接 https://blog.csdn.net/m0_74055560/article/details/134348491a
+  mvc:
+    pathmatch:
+      matching-strategy: ANT_PATH_MATCHER
+
+# 日志文件配置路径
+logging:
+  config: classpath:log4j2-dev.xml
