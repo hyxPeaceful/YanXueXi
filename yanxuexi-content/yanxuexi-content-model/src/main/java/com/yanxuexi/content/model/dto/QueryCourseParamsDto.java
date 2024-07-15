@@ -1,7 +1,9 @@
 package com.yanxuexi.content.model.dto;
 
 import io.swagger.annotations.ApiModelProperty;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * @author hyx
@@ -10,6 +12,8 @@ import lombok.Data;
  * @date 2024-06-15 15:30
  **/
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class QueryCourseParamsDto {
     //审核状态
     @ApiModelProperty("审核状态")

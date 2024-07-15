@@ -1,4 +1,4 @@
-package com.yanxuexi.config;
+package com.yanxuexi.content.config;
 
 
 import io.swagger.annotations.ApiOperation;
