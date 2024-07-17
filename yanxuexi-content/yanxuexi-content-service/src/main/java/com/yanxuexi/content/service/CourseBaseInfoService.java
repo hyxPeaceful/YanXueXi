@@ -2,6 +2,8 @@ package com.yanxuexi.content.service;
 
 import com.yanxuexi.base.model.PageParams;
 import com.yanxuexi.base.model.PageResult;
+import com.yanxuexi.content.model.dto.AddCourseDto;
+import com.yanxuexi.content.model.dto.CourseBaseInfoDto;
 import com.yanxuexi.content.model.dto.QueryCourseParamsDto;
 import com.yanxuexi.content.model.po.CourseBase;
 
@@ -20,4 +22,12 @@ public interface CourseBaseInfoService {
      * @return 查询结果
      */
     public PageResult<CourseBase> queryCourseBaseList (PageParams pageParams, QueryCourseParamsDto queryCourseParamsDto);
+
+    /**
+     * 添加课程基本信息
+     * @param companyId 教学机构 Id
+     * @param addCourseDto 课程基本信息
+     * @return
+     */
+    public CourseBaseInfoDto createCourseBase (Long companyId, AddCourseDto addCourseDto);
 }
