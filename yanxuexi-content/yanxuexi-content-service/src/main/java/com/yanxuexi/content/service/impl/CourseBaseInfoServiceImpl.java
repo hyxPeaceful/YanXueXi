@@ -2,6 +2,7 @@ package com.yanxuexi.content.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.yanxuexi.base.exception.YanXueXiException;
 import com.yanxuexi.base.model.PageParams;
 import com.yanxuexi.base.model.PageResult;
 import com.yanxuexi.content.mapper.CourseBaseMapper;
@@ -52,8 +53,7 @@ public class CourseBaseInfoServiceImpl implements CourseBaseInfoService {
 
         // 查询并返回
         Page<CourseBase> courseBasePage = courseBaseMapper.selectPage(new Page<>(pageParams.getPageNo(), pageParams.getPageSize()), queryWrapper);
-        PageResult<CourseBase> pageResult = new PageResult<>(courseBasePage.getRecords(), courseBasePage.getTotal(), pageParams.getPageNo(), pageParams.getPageSize());
-        return pageResult;
+        return new PageResult<>(courseBasePage.getRecords(), courseBasePage.getTotal(), pageParams.getPageNo(), pageParams.getPageSize());
     }
 
     @Transactional
@@ -61,31 +61,31 @@ public class CourseBaseInfoServiceImpl implements CourseBaseInfoService {
     public CourseBaseInfoDto createCourseBase(Long companyId, AddCourseDto addCourseDto) {
         //合法性校验
         if (StringUtils.isBlank(addCourseDto.getName())) {
-            throw new RuntimeException("课程名称为空");
+            YanXueXiException.cast("课程名称为空");
         }
 
         if (StringUtils.isBlank(addCourseDto.getMt())) {
-            throw new RuntimeException("课程分类为空");
+            YanXueXiException.cast("课程分类为空");
         }
 
         if (StringUtils.isBlank(addCourseDto.getSt())) {
-            throw new RuntimeException("课程分类为空");
+            YanXueXiException.cast("课程分类为空");
         }
 
         if (StringUtils.isBlank(addCourseDto.getGrade())) {
-            throw new RuntimeException("课程等级为空");
+            YanXueXiException.cast("课程等级为空");
         }
 
         if (StringUtils.isBlank(addCourseDto.getTeachmode())) {
-            throw new RuntimeException("教育模式为空");
+            YanXueXiException.cast("教育模式为空");
         }
 
         if (StringUtils.isBlank(addCourseDto.getUsers())) {
-            throw new RuntimeException("适应人群为空");
+            YanXueXiException.cast("适应人群为空");
         }
 
         if (StringUtils.isBlank(addCourseDto.getCharge())) {
-            throw new RuntimeException("收费规则为空");
+            YanXueXiException.cast("收费规则为空");
         }
 
         // 向课程基本信息表插入课程基本信息
@@ -102,7 +102,7 @@ public class CourseBaseInfoServiceImpl implements CourseBaseInfoService {
         // 插入数据库
         int insert = courseBaseMapper.insert(courseBaseNew);
         if (insert <= 0) {
-            throw new RuntimeException("课程基本信息插入失败");
+            YanXueXiException.cast("课程基本信息插入失败");
         }
 
         // 向课程营销表插入课程营销信息
@@ -115,7 +115,7 @@ public class CourseBaseInfoServiceImpl implements CourseBaseInfoService {
         // 保存课程营销信息
         int update = saveCourseMarket(courseMarketNew);
         if (update <= 0) {
-            throw new RuntimeException("课程营销信息保存失败");
+            YanXueXiException.cast("课程营销信息保存失败");
         }
 
         // 查询课程信息
@@ -126,11 +126,11 @@ public class CourseBaseInfoServiceImpl implements CourseBaseInfoService {
     private int saveCourseMarket(CourseMarket courseMarketNew) {
         // 合法性校验
         if (StringUtils.isEmpty(courseMarketNew.getCharge())) {
-            throw new RuntimeException("收费规则不能为空");
+            YanXueXiException.cast("收费规则不能为空");
         }
         if (courseMarketNew.getCharge().equals("201001")) {
             if (courseMarketNew.getPrice() == null || courseMarketNew.getPrice().floatValue() <= 0) {
-                throw new RuntimeException("课程的价格不能为空且必须大于0");
+                YanXueXiException.cast("课程的价格不能为空且必须大于0");
             }
         }
         // 插入课程营销信息

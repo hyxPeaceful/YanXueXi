@@ -27,7 +27,7 @@ public interface CourseBaseInfoService {
      * 添加课程基本信息
      * @param companyId 教学机构 Id
      * @param addCourseDto 课程基本信息
-     * @return
+     * @return 课程信息
      */
     public CourseBaseInfoDto createCourseBase (Long companyId, AddCourseDto addCourseDto);
 }
