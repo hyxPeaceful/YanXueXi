@@ -5,15 +5,12 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.yanxuexi.base.exception.YanXueXiException;
 import com.yanxuexi.base.model.PageParams;
 import com.yanxuexi.base.model.PageResult;
-import com.yanxuexi.content.mapper.CourseBaseMapper;
-import com.yanxuexi.content.mapper.CourseCategoryMapper;
-import com.yanxuexi.content.mapper.CourseMarketMapper;
+import com.yanxuexi.content.mapper.*;
 import com.yanxuexi.content.model.dto.AddCourseDto;
 import com.yanxuexi.content.model.dto.CourseBaseInfoDto;
+import com.yanxuexi.content.model.dto.EditCourseDto;
 import com.yanxuexi.content.model.dto.QueryCourseParamsDto;
-import com.yanxuexi.content.model.po.CourseBase;
-import com.yanxuexi.content.model.po.CourseCategory;
-import com.yanxuexi.content.model.po.CourseMarket;
+import com.yanxuexi.content.model.po.*;
 import com.yanxuexi.content.service.CourseBaseInfoService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,6 +37,19 @@ public class CourseBaseInfoServiceImpl implements CourseBaseInfoService {
     @Autowired
     CourseCategoryMapper courseCategoryMapper;
 
+    @Autowired
+    CourseTeacherMapper courseTeacherMapper;
+
+    @Autowired
+    TeachplanMapper teachplanMapper;
+
+    /**
+     * 课程分页查询
+     *
+     * @param pageParams           分页查询参数
+     * @param queryCourseParamsDto 查询条件
+     * @return 查询结果
+     */
     @Override
     public PageResult<CourseBase> queryCourseBaseList(PageParams pageParams, QueryCourseParamsDto queryCourseParamsDto) {
         // 拼接查询条件
@@ -56,6 +66,13 @@ public class CourseBaseInfoServiceImpl implements CourseBaseInfoService {
         return new PageResult<>(courseBasePage.getRecords(), courseBasePage.getTotal(), pageParams.getPageNo(), pageParams.getPageSize());
     }
 
+    /**
+     * 添加课程基本信息
+     *
+     * @param companyId    教学机构 Id
+     * @param addCourseDto 课程基本信息
+     * @return 课程信息
+     */
     @Transactional
     @Override
     public CourseBaseInfoDto createCourseBase(Long companyId, AddCourseDto addCourseDto) {
@@ -94,6 +111,12 @@ public class CourseBaseInfoServiceImpl implements CourseBaseInfoService {
         return courseBaseInfo;
     }
 
+    /**
+     * 保存课程销售信息
+     *
+     * @param courseMarketNew
+     * @return int
+     */
     private int saveCourseMarket(CourseMarket courseMarketNew) {
         // 合法性校验
         if (StringUtils.isEmpty(courseMarketNew.getCharge())) {
@@ -104,7 +127,7 @@ public class CourseBaseInfoServiceImpl implements CourseBaseInfoService {
                 YanXueXiException.cast("课程的价格不能为空且必须大于0");
             }
         }
-        // 插入课程营销信息
+        // 查询课程营销信息
         CourseMarket courseMarket = courseMarketMapper.selectById(courseMarketNew.getId());
         // 如果课程营销信息不存在则插入
         if (courseMarket == null) {
@@ -119,10 +142,11 @@ public class CourseBaseInfoServiceImpl implements CourseBaseInfoService {
 
     /**
      * 根据课程id查询课程基本信息，包括基本信息和营销信息
+     *
      * @param courseId 课程Id
-     * @return
+     * @return CourseBaseInfoDto
      */
-    private CourseBaseInfoDto getCourseBaseInfo(Long courseId) {
+    public CourseBaseInfoDto getCourseBaseInfo(Long courseId) {
         // 查询课程基本信息
         CourseBase courseBase = courseBaseMapper.selectById(courseId);
         if (courseBase == null) {
@@ -143,5 +167,71 @@ public class CourseBaseInfoServiceImpl implements CourseBaseInfoService {
         courseBaseInfoDto.setStName(courseCategoryBySt.getName());
 
         return courseBaseInfoDto;
+    }
+
+    /**
+     * 修改课程
+     *
+     * @param companyId     教学机构 Id
+     * @param editCourseDto 课程基本信息
+     * @return 修改后课程基本信息
+     */
+    @Override
+    public CourseBaseInfoDto updateCourseBase(Long companyId, EditCourseDto editCourseDto) {
+        // 业务逻辑校验
+        // 查询课程是否存在
+        CourseBase courseBase = courseBaseMapper.selectById(editCourseDto.getId());
+        if (courseBase == null) {
+            YanXueXiException.cast("修改的课程不存在");
+        }
+        // 机构只能修改自身所管理的课程
+        if (!courseBase.getCompanyId().equals(companyId)) {
+            YanXueXiException.cast("机构只能修改自身所管理的课程");
+        }
+
+        // 封装课程基础信息
+        BeanUtils.copyProperties(editCourseDto, courseBase);
+        courseBase.setChangeDate(LocalDateTime.now());
+        // 更新课程基础信息
+        int updateCourseBase = courseBaseMapper.updateById(courseBase);
+        if (updateCourseBase <= 0) {
+            YanXueXiException.cast("课程基础信息修改失败");
+        }
+        // 封装课程营销信息
+        CourseMarket courseMarket = new CourseMarket();
+        BeanUtils.copyProperties(editCourseDto, courseMarket);
+        // 保存课程营销信息
+        int updateCourseMarket = saveCourseMarket(courseMarket);
+        if (updateCourseMarket <= 0) {
+            YanXueXiException.cast("课程营销信息修改失败");
+        }
+        // 查询修改后的课程信息
+        CourseBaseInfoDto courseBaseInfo = getCourseBaseInfo(editCourseDto.getId());
+        return courseBaseInfo;
+    }
+
+    /**
+     * 删除课程
+     *
+     * @param companyId 机构 Id
+     * @param courseId  课程 Id
+     */
+    @Override
+    public void delectCourse(Long companyId, Long courseId) {
+        CourseBase courseBase = courseBaseMapper.selectById(courseId);
+        if (!companyId.equals(courseBase.getCompanyId()))
+            YanXueXiException.cast("只允许删除本机构的课程");
+        // 删除课程教师信息
+        LambdaQueryWrapper<CourseTeacher> teacherLambdaQueryWrapper = new LambdaQueryWrapper<>();
+        teacherLambdaQueryWrapper.eq(CourseTeacher::getCourseId, courseId);
+        courseTeacherMapper.delete(teacherLambdaQueryWrapper);
+        // 删除课程计划
+        LambdaQueryWrapper<Teachplan> teachplanLambdaQueryWrapper = new LambdaQueryWrapper<>();
+        teachplanLambdaQueryWrapper.eq(Teachplan::getCourseId, courseId);
+        teachplanMapper.delete(teachplanLambdaQueryWrapper);
+        // 删除营销信息
+        courseMarketMapper.deleteById(courseId);
+        // 删除课程基本信息
+        courseBaseMapper.deleteById(courseId);
     }
 }

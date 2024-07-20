@@ -33,3 +33,26 @@ Content-Type: application/json
   "grade": "204001",
   "description": "hyx测试课程hyx测试课程hyx测试课程"
 }
+
+### 根据课程Id查询课程基本信息接口测试
+GET {{content_host}}/content/course/39
+
+### 根据课程Id查询课程计划接口测试
+GET {{content_host}}/content/teachplan/117/tree-nodes
+
+### 新增课程计划--章
+POST {{content_host}}/content/teachplan
+Content-Type: application/json
+
+{
+  "courseId" : 74,
+  "parentid": 0,
+  "grade" : 1,
+  "pname" : "新章名称 [点击修改]"
+}
+
+### 删除课程计划
+DELETE {{content_host}}/content/teachplan/43
+
+### 查询课程教师信息
+GET {{content_host}}/content/courseTeacher/list/74
