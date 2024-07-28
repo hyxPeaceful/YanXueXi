@@ -13,7 +13,6 @@ import springfox.documentation.oas.annotations.EnableOpenApi;
  * @Description:
  */
 @EnableScheduling
-@EnableOpenApi
 @SpringBootApplication
 public class SystemApplication {
 

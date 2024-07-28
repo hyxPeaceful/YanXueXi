@@ -22,7 +22,11 @@
             <artifactId>yanxuexi-system-service</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
-
+        <!-- spring cloud 基础环境包，基于spring cloud才会读取bootstrap.yml -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-bootstrap</artifactId>
+        </dependency>
         <!-- Spring Boot 的 Spring Web MVC 集成 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -69,7 +73,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-log4j2</artifactId>
         </dependency>
-
         <!-- Spring Boot 集成 swagger -->
         <dependency>
             <groupId>io.springfox</groupId>
@@ -79,18 +82,10 @@
             <groupId>com.github.xiaoymin</groupId>
             <artifactId>knife4j-spring-ui</artifactId>
         </dependency>
-
-        <!-- spring cloud 基础环境包，基于spring cloud才会读取bootstrap.yml -->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-bootstrap</artifactId>
-        </dependency>
-
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
         </dependency>
-
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
