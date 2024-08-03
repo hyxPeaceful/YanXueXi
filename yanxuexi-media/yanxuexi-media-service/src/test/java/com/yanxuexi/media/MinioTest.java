@@ -9,6 +9,9 @@ import org.junit.jupiter.api.Test;
 import java.io.*;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * @author hyx
@@ -68,5 +71,36 @@ public class MinioTest {
         if (sourceMd5.equals(localMd5)) {
             System.out.println("下载成功");
         }
+    }
+
+    // 分块上传
+    @Test
+    public void uploadChunk() throws IOException, ServerException, InsufficientDataException, ErrorResponseException, NoSuchAlgorithmException, InvalidKeyException, InvalidResponseException, XmlParserException, InternalException {
+        File chunkFolder = new File("D:\\Develop\\test\\fileUpload\\chunk\\");
+        File[] chunkFiles = chunkFolder.listFiles();
+        for (int i = 0; i < chunkFiles.length; i++) {
+            // 上传文件参数
+            UploadObjectArgs testbucket = UploadObjectArgs.builder()
+                    .bucket("testbucket")
+                    .filename("D:\\Develop\\test\\fileUpload\\chunk\\" + i)
+                    .object("chunk/" + i)
+                    .build();
+            // 上传文件
+            minioClient.uploadObject(testbucket);
+            System.out.println("分块" + i + "上传成功");
+        }
+    }
+
+    // 测试MinIo分块合并功能
+    @Test
+    public void mergeChunk() throws ServerException, InsufficientDataException, ErrorResponseException, IOException, NoSuchAlgorithmException, InvalidKeyException, InvalidResponseException, XmlParserException, InternalException {
+        File chunkFolder = new File("D:\\Develop\\test\\fileUpload\\chunk\\");
+        File[] chunkFiles = chunkFolder.listFiles();
+        int chunkNum = chunkFiles.length;
+        List<ComposeSource> composeSourceList = Stream.iterate(0, i -> ++i).
+                limit(chunkNum).
+                map(i -> ComposeSource.builder().bucket("testbucket").object("chunk/" + i).build()).toList();
+        ComposeObjectArgs composeObjectArgs = ComposeObjectArgs.builder().bucket("testbucket").object("test/1.mp4").sources(composeSourceList).build();
+        minioClient.composeObject(composeObjectArgs);
     }
 }

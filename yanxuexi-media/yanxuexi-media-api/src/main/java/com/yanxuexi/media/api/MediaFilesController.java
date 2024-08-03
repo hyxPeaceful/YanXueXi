@@ -9,13 +9,17 @@ import com.yanxuexi.base.model.PageParams;
 import com.yanxuexi.base.model.PageResult;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.time.LocalDateTime;
 
 /**
  * @author Mr.M
@@ -35,7 +39,6 @@ public class MediaFilesController {
     public PageResult<MediaFiles> list(PageParams pageParams, @RequestBody QueryMediaParamsDto queryMediaParamsDto) {
         Long companyId = 1232141425L;
         return mediaFileService.queryMediaFiles(companyId, pageParams, queryMediaParamsDto);
-
     }
 
     @ApiOperation("上传文件接口")
@@ -53,8 +56,11 @@ public class MediaFilesController {
         // 文件类型
         uploadFileParamsDto.setFileType("001001");
 
+        // 获取文件Md5值，保证多线程同时创建临时文件时不会出现名称冲突
+        InputStream inputStream = multipartFile.getInputStream();
+        String md5Hex = DigestUtils.md5Hex(inputStream);
         // 创建一个临时文件
-        File tempFile = File.createTempFile("minio", ".temp");
+        File tempFile = File.createTempFile("minio" + md5Hex, ".temp");
         multipartFile.transferTo(tempFile);
         // 临时文件路径
         String localFilePath = tempFile.getAbsolutePath();
