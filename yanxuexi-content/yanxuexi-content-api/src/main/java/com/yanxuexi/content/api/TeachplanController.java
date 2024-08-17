@@ -1,5 +1,6 @@
 package com.yanxuexi.content.api;
 
+import com.yanxuexi.content.model.dto.BindTeachplanMediaDto;
 import com.yanxuexi.content.model.dto.MoveStatusDto;
 import com.yanxuexi.content.model.dto.SaveTeachplanDto;
 import com.yanxuexi.content.model.dto.TeachplanDto;
@@ -53,5 +54,11 @@ public class TeachplanController {
     @PostMapping("/teachplan/moveup/{teachplanId}")
     public void teachplanMoveUp(@PathVariable @Validated @NotNull(message = "课程计划 Id 不能为空") Long teachplanId) {
         teachplanService.moveTeachPlan(teachplanId, MoveStatusDto.MOVE_UP);
+    }
+
+    @ApiOperation(value = "课程计划和媒资信息绑定")
+    @PostMapping("/teachplan/association/media")
+    public void associationMedia(@RequestBody BindTeachplanMediaDto bindTeachplanMediaDto){
+        teachplanService.associationMedia(bindTeachplanMediaDto);
     }
 }

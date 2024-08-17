@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.yanxuexi.base.exception.YanXueXiException;
 import com.yanxuexi.content.mapper.TeachplanMapper;
 import com.yanxuexi.content.mapper.TeachplanMediaMapper;
+import com.yanxuexi.content.model.dto.BindTeachplanMediaDto;
 import com.yanxuexi.content.model.dto.MoveStatusDto;
 import com.yanxuexi.content.model.dto.SaveTeachplanDto;
 import com.yanxuexi.content.model.dto.TeachplanDto;
@@ -63,7 +64,8 @@ public class TeachplanServiceImpl implements TeachplanService {
             // 确定排序字段，默认新增的章节排在最后，因此可以找到同级节点中排序字段的最大值，然后加1
             Long courseId = teachplan.getCourseId();
             Long parentid = teachplan.getParentid();
-            int maxOrderBy = teachplanMapper.selectMaxOrderBy(courseId, parentid);
+            Integer maxOrderBy = teachplanMapper.selectMaxOrderBy(courseId, parentid);
+            maxOrderBy = maxOrderBy == null ? 1 : maxOrderBy;
             teachplan.setOrderby(maxOrderBy + 1);
             teachplanMapper.insert(teachplan);
         }
@@ -161,5 +163,37 @@ public class TeachplanServiceImpl implements TeachplanService {
             YanXueXiException.cast("课程章节移动失败");
         }
         teachplanMapper.updateById(swapTeachplan);
+    }
+
+    /**
+     * @description: 教学计划绑定媒资
+     * @param bindTeachplanMediaDto 绑定参数
+     * @return 教学计划媒资绑定信息
+     */
+    @Override
+    @Transactional
+    public TeachplanMedia associationMedia(BindTeachplanMediaDto bindTeachplanMediaDto) {
+        // 校验
+        Long teachplanId = bindTeachplanMediaDto.getTeachplanId();
+        Teachplan teachplan = teachplanMapper.selectById(teachplanId);
+        Long courseId = teachplan.getCourseId();
+        if (teachplan == null) {
+            YanXueXiException.cast("课程计划不存在");
+        }
+        if (teachplan.getGrade() != 2) {
+            YanXueXiException.cast("仅允许二级课程计划绑定媒资");
+        }
+        // 删除课程计划已绑定的媒资
+        LambdaQueryWrapper<TeachplanMedia> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.eq(TeachplanMedia::getTeachplanId, bindTeachplanMediaDto.getTeachplanId());
+        int delete = teachplanMediaMapper.delete(queryWrapper);
+
+        // 课程计划绑定新的媒资
+        TeachplanMedia teachplanMedia = new TeachplanMedia();
+        BeanUtils.copyProperties(bindTeachplanMediaDto, teachplanMedia);
+        teachplanMedia.setMediaFilename(bindTeachplanMediaDto.getFileName());
+        teachplanMedia.setCourseId(courseId);
+        int insert = teachplanMediaMapper.insert(teachplanMedia);
+        return teachplanMedia;
     }
 }

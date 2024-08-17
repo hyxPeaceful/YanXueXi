@@ -1,8 +1,10 @@
 package com.yanxuexi.content.service;
 
+import com.yanxuexi.content.model.dto.BindTeachplanMediaDto;
 import com.yanxuexi.content.model.dto.MoveStatusDto;
 import com.yanxuexi.content.model.dto.SaveTeachplanDto;
 import com.yanxuexi.content.model.dto.TeachplanDto;
+import com.yanxuexi.content.model.po.TeachplanMedia;
 
 import java.util.List;
 
@@ -38,4 +40,11 @@ public interface TeachplanService {
      * @param moveStatus 课程移动状态
      */
     void moveTeachPlan(Long teachplanId, MoveStatusDto moveStatus);
+
+    /**
+     * @description: 教学计划绑定媒资
+     * @param bindTeachplanMediaDto 绑定参数
+     * @return 教学计划媒资绑定信息
+     */
+    TeachplanMedia associationMedia(BindTeachplanMediaDto bindTeachplanMediaDto);
 }
