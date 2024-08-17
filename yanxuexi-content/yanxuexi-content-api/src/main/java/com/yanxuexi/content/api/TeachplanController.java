@@ -56,9 +56,18 @@ public class TeachplanController {
         teachplanService.moveTeachPlan(teachplanId, MoveStatusDto.MOVE_UP);
     }
 
-    @ApiOperation(value = "课程计划和媒资信息绑定")
+    @ApiOperation("课程计划和媒资信息绑定")
     @PostMapping("/teachplan/association/media")
     public void associationMedia(@RequestBody BindTeachplanMediaDto bindTeachplanMediaDto){
         teachplanService.associationMedia(bindTeachplanMediaDto);
     }
+
+    @ApiOperation("课程计划解除媒资信息绑定")
+    @DeleteMapping("/teachplan/association/media/{teachPlanId}/{mediaId}")
+    public void deleteAssociatedMedia(
+            @PathVariable @Validated @NotNull(message = "课程计划Id不能为空") Long teachPlanId,
+            @PathVariable @Validated @NotNull(message = "媒资Id不能为空") String mediaId) {
+            teachplanService.deleteAssociatedMedia(teachPlanId, mediaId);
+    }
+
 }
