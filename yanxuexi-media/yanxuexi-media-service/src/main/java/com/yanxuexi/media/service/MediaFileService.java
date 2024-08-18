@@ -104,4 +104,11 @@ public interface MediaFileService {
      * @return 下载后的文件
      */
     File downloadFileFromMinIO(String bucket, String objectName);
+
+    /**
+     * @description: 根据文件Id获取文件信息
+     * @param fileId 文件Id
+     * @return 文件信息
+     */
+    MediaFiles getFileById(String fileId);
 }

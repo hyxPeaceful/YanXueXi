@@ -1,4 +1,4 @@
-package com.yanxuexi;
+package com.yanxuexi.media;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

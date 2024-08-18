@@ -443,6 +443,16 @@ public class MediaFileServiceImpl implements MediaFileService {
     }
 
     /**
+     * @description: 根据文件Id获取文件信息
+     * @param fileId 文件Id
+     * @return 文件信息
+     */
+    @Override
+    public MediaFiles getFileById(String fileId) {
+        return mediaFilesMapper.selectById(fileId);
+    }
+
+    /**
      * 根据文件Md5值，获取文件分块所在目录
      *
      * @param fileMd5
