@@ -15,4 +15,18 @@ public interface CoursePublishService {
      * @return 课程预览信息
      */
     CoursePreviewDto getCoursePreviewInfo(Long courseId);
+
+    /**
+     * @description: 提交课程审核
+     * @param compId 机构Id
+     * @param courseId 课程Id
+     */
+    void commitAudi(Long compId, Long courseId);
+
+    /**
+     * @description: 课程发布
+     * @param compId 机构Id
+     * @param courseId 课程Id
+     */
+    void coursePublish(Long compId, Long courseId);
 }

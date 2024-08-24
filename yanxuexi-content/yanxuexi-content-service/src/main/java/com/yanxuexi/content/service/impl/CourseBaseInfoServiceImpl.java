@@ -44,9 +44,8 @@ public class CourseBaseInfoServiceImpl implements CourseBaseInfoService {
     TeachplanMapper teachplanMapper;
 
     /**
-     * 课程分页查询
-     *
-     * @param pageParams           分页查询参数
+     * @description:    课程分页查询
+     * @param pageParams    分页查询参数
      * @param queryCourseParamsDto 查询条件
      * @return 查询结果
      */
@@ -162,10 +161,11 @@ public class CourseBaseInfoServiceImpl implements CourseBaseInfoService {
         }
         // 查询课程分类信息
         CourseCategory courseCategoryByMt = courseCategoryMapper.selectById(courseBaseInfoDto.getMt());
+        // 大分类名称
         courseBaseInfoDto.setMtName(courseCategoryByMt.getName());
         CourseCategory courseCategoryBySt = courseCategoryMapper.selectById(courseBaseInfoDto.getSt());
+        // 小分类名称
         courseBaseInfoDto.setStName(courseCategoryBySt.getName());
-
         return courseBaseInfoDto;
     }
 

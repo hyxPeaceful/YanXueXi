@@ -11,7 +11,7 @@ import springfox.documentation.oas.annotations.EnableOpenApi;
  * @date 2024-06-15 16:19
  **/
 @EnableOpenApi
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = {"com.yanxuexi.content", "com.yanxuexi.messagesdk"})
 public class ContentApplication {
     public static void main(String[] args) {
         SpringApplication.run(ContentApplication.class, args);
