@@ -1,11 +1,10 @@
-#微服务配置
 spring:
   application:
-    name: content-service # 服务名
+    name: search
   cloud:
     nacos:
       server-addr: 192.168.101.65:8848
-      discovery: # 服务注册相关配置
+      discovery:
         namespace: dev
         group: yanxuexi-project
       config:
@@ -14,13 +13,12 @@ spring:
         file-extension: yaml
         refresh-enabled: true
         shared-configs:
+          - data-id: swagger-${spring.profiles.active}.yaml
+            group: yanxuexi-common
+            refresh: true
           - data-id: logging-${spring.profiles.active}.yaml
             group: yanxuexi-common
             refresh: true
-          - data-id: feign-${spring.profiles.active}.yaml
-            group: yanxuexi-common
-            refresh: true
+
   profiles:
     active: dev
-
-

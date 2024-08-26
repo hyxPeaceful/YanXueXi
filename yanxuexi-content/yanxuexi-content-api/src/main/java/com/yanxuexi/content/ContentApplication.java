@@ -2,6 +2,7 @@ package com.yanxuexi.content;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 import springfox.documentation.oas.annotations.EnableOpenApi;
 
 /**
@@ -12,6 +13,7 @@ import springfox.documentation.oas.annotations.EnableOpenApi;
  **/
 @EnableOpenApi
 @SpringBootApplication(scanBasePackages = {"com.yanxuexi.content", "com.yanxuexi.messagesdk"})
+@EnableFeignClients(basePackages={"com.yanxuexi.content.feignclient"})
 public class ContentApplication {
     public static void main(String[] args) {
         SpringApplication.run(ContentApplication.class, args);

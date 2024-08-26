@@ -8,6 +8,7 @@ import com.yanxuexi.base.exception.YanXueXiException;
 import com.yanxuexi.base.model.PageParams;
 import com.yanxuexi.base.model.PageResult;
 import com.yanxuexi.base.model.RestResponse;
+import com.yanxuexi.base.utils.StringUtil;
 import com.yanxuexi.media.mapper.MediaFilesMapper;
 import com.yanxuexi.media.mapper.MediaProcessMapper;
 import com.yanxuexi.media.model.dto.QueryMediaParamsDto;
@@ -211,7 +212,7 @@ public class MediaFileServiceImpl implements MediaFileService {
         }
     }
     @Override
-    public UploadFileResultDto uploadFile(Long companyId, UploadFileParamsDto uploadFileParamsDto, String localFilePath) {
+    public UploadFileResultDto uploadFile(Long companyId, UploadFileParamsDto uploadFileParamsDto, String localFilePath, String objectName) {
         // 上传文件到MinIo
         // 文件名
         String fileName = uploadFileParamsDto.getFilename();
@@ -225,7 +226,9 @@ public class MediaFileServiceImpl implements MediaFileService {
         File file = new File(localFilePath);
         String fileMd5 = getFileMd5(file);
         // 文件对象名（包含目录）
-        String objectName = defaultFolderPath + fileMd5 + extension;
+        if (StringUtil.isEmpty(objectName)) {
+            objectName = defaultFolderPath + fileMd5 + extension;
+        }
         // 上传文件
         boolean result = addMediaFilesToMinIO(localFilePath, mimeType, filesBucket, objectName);
         if (!result) {

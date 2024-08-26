@@ -1,6 +1,9 @@
 package com.yanxuexi.content.service.impl;
 
 import com.alibaba.fastjson.JSON;
+import com.yanxuexi.content.config.MultipartSupportConfig;
+import com.yanxuexi.content.feignclient.MediaServiceClient;
+import com.yanxuexi.content.model.po.Teachplan;
 import com.yanxuexi.messagesdk.model.po.MqMessage;
 import com.yanxuexi.messagesdk.service.MqMessageService;
 import com.yanxuexi.base.exception.YanXueXiException;
@@ -17,14 +20,24 @@ import com.yanxuexi.content.model.po.CoursePublishPre;
 import com.yanxuexi.content.service.CourseBaseInfoService;
 import com.yanxuexi.content.service.CoursePublishService;
 import com.yanxuexi.content.service.TeachplanService;
+import freemarker.template.Configuration;
+import freemarker.template.Template;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.io.IOUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.freemarker.FreeMarkerTemplateUtils;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
 import java.time.LocalDateTime;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author hyx
@@ -56,10 +69,13 @@ public class CoursePublishServiceImpl implements CoursePublishService {
     @Autowired
     MqMessageService mqMessageService;
 
+    @Autowired
+    MediaServiceClient mediaServiceClient;
+
     /**
-     * @description: 获取课程预览信息
      * @param courseId 课程Id
      * @return 课程预览信息
+     * @description: 获取课程预览信息
      */
     @Override
     public CoursePreviewDto getCoursePreviewInfo(Long courseId) {
@@ -74,9 +90,9 @@ public class CoursePublishServiceImpl implements CoursePublishService {
     }
 
     /**
-     * @description: 提交课程审核
-     * @param compId 机构Id
+     * @param compId   机构Id
      * @param courseId 课程Id
+     * @description: 提交课程审核
      */
     @Override
     @Transactional
@@ -123,8 +139,7 @@ public class CoursePublishServiceImpl implements CoursePublishService {
         if (publishPre == null) {
             // 插入
             coursePublishPreMapper.insert(coursePublishPre);
-        }
-        else {
+        } else {
             // 更新
             coursePublishPreMapper.updateById(coursePublishPre);
         }
@@ -134,9 +149,9 @@ public class CoursePublishServiceImpl implements CoursePublishService {
     }
 
     /**
-     * @description: 课程发布
-     * @param compId 机构Id
+     * @param compId   机构Id
      * @param courseId 课程Id
+     * @description: 课程发布
      */
     @Override
     @Transactional
@@ -160,8 +175,7 @@ public class CoursePublishServiceImpl implements CoursePublishService {
         if (coursePublished == null) {
             // 新增
             int insert = coursePublishMapper.insert(coursePublish);
-        }
-        else {
+        } else {
             // 修改
             int update = coursePublishMapper.updateById(coursePublish);
         }
@@ -172,13 +186,84 @@ public class CoursePublishServiceImpl implements CoursePublishService {
         // 删除预发布表中的课程信息
         int delete = coursePublishPreMapper.deleteById(courseId);
     }
+
     /**
-     * @description 保存消息表记录
-     * @param courseId  课程id
+     * @param courseId 课程Id
+     * @return 课程静态化页面文件
+     * @description: 课程静态化
      */
-    private void saveCoursePublishMessage(Long courseId){
+    @Override
+    public File generateCourseHtml(Long courseId) {
+        //静态化文件
+        File htmlFile = null;
+
+        try {
+            //配置freemarker
+            Configuration configuration = new Configuration(Configuration.getVersion());
+
+            //加载模板
+            //选指定模板路径,classpath下templates下
+            //得到classpath路径
+            String classpath = this.getClass().getResource("/").getPath();
+            configuration.setDirectoryForTemplateLoading(new File(classpath + "/templates/"));
+            //设置字符编码
+            configuration.setDefaultEncoding("utf-8");
+
+            //指定模板文件名称
+            Template template = configuration.getTemplate("course_template.ftl");
+
+            //准备数据
+            // todo:（这里不应该获取课程发布表中的课程信息吗，而不是重新去各个表中查，否则会出现最终发布的课程信息和审核通过的课程信息不一致）
+            CoursePublish coursePublish = coursePublishMapper.selectById(courseId);
+            CourseBaseInfoDto courseBaseInfoDto = new CourseBaseInfoDto();
+            BeanUtils.copyProperties(coursePublish, courseBaseInfoDto);
+            BeanUtils.copyProperties(JSON.parseObject(coursePublish.getMarket(), CourseMarket.class), courseBaseInfoDto);
+            CoursePreviewDto coursePreviewDto = new CoursePreviewDto();
+            coursePreviewDto.setCourseBase(courseBaseInfoDto);
+            coursePreviewDto.setTeachplans(JSON.parseObject(coursePublish.getTeachplan(), List.class));
+
+            Map<String, Object> map = new HashMap<>();
+            map.put("model", coursePreviewDto);
+
+            //静态化
+            //参数1：模板，参数2：数据模型
+            String content = FreeMarkerTemplateUtils.processTemplateIntoString(template, map);
+            //将静态化内容输出到文件中
+            InputStream inputStream = IOUtils.toInputStream(content);
+            //创建静态化文件
+            htmlFile = File.createTempFile("course", ".html");
+            log.debug("课程静态化，生成静态文件:{}", htmlFile.getAbsolutePath());
+            //输出流
+            FileOutputStream outputStream = new FileOutputStream(htmlFile);
+            IOUtils.copy(inputStream, outputStream);
+        } catch (Exception e) {
+            log.error("课程静态化异常:{}", e.toString());
+            YanXueXiException.cast("课程静态化异常");
+        }
+        return htmlFile;
+    }
+
+    /**
+     * @param courseId 课程Id
+     * @param file     课程静态化页面文件
+     * @description: 上传课程静态化页面文件
+     */
+    @Override
+    public void uploadCourseHtml(Long courseId, File file) {
+        MultipartFile multipartFile = MultipartSupportConfig.getMultipartFile(file);
+        String course = mediaServiceClient.uploadFile(multipartFile, "course/" + courseId + ".html");
+        if (course == null) {
+            YanXueXiException.cast("上传静态文件异常");
+        }
+    }
+
+    /**
+     * @param courseId 课程id
+     * @description 保存消息表记录
+     */
+    private void saveCoursePublishMessage(Long courseId) {
         MqMessage mqMessage = mqMessageService.addMessage("course_publish", String.valueOf(courseId), null, null);
-        if(mqMessage == null){
+        if (mqMessage == null) {
             YanXueXiException.cast("保存消息记录失败");
         }
     }

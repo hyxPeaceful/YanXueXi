@@ -2,6 +2,8 @@ package com.yanxuexi.content.service;
 
 import com.yanxuexi.content.model.dto.CoursePreviewDto;
 
+import java.io.File;
+
 /**
  * @author hyx
  * @version 1.0
@@ -29,4 +31,18 @@ public interface CoursePublishService {
      * @param courseId 课程Id
      */
     void coursePublish(Long compId, Long courseId);
+
+    /**
+     * @description: 课程静态化
+     * @param courseId 课程Id
+     * @return 课程静态化页面文件
+     */
+    File generateCourseHtml(Long courseId);
+
+    /**
+     * @description: 上传课程静态化页面文件
+     * @param courseId 课程Id
+     * @param file 课程静态化页面文件
+     */
+    void uploadCourseHtml(Long courseId,File file);
 }

@@ -19,6 +19,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.ConnectException;
 import java.time.LocalDateTime;
 
 /**
@@ -42,8 +43,9 @@ public class MediaFilesController {
     }
 
     @ApiOperation("上传文件接口")
-    @RequestMapping(value = "/upload/coursefile")
-    public UploadFileResultDto uploadFile(@RequestPart("filedata") MultipartFile multipartFile) throws IOException {
+    @RequestMapping(value = "/upload/coursefile", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public UploadFileResultDto uploadFile(@RequestPart("filedata") MultipartFile multipartFile,
+                                          @RequestParam(value= "objectName",required=false) String objectName) throws IOException {
         // 机构Id 暂时固定
         Long companyId = 1232141425L;
 
@@ -65,6 +67,6 @@ public class MediaFilesController {
         // 临时文件路径
         String localFilePath = tempFile.getAbsolutePath();
 
-        return mediaFileService.uploadFile(companyId, uploadFileParamsDto, localFilePath);
+        return mediaFileService.uploadFile(companyId, uploadFileParamsDto, localFilePath, objectName);
     }
 }
