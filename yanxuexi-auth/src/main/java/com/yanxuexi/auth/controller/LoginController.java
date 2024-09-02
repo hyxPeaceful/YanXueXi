@@ -46,6 +46,4 @@ public class LoginController {
         return "访问r2资源";
     }
 
-
-
 }

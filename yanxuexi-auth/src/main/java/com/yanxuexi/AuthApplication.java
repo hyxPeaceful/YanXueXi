@@ -2,8 +2,13 @@ package com.yanxuexi;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.openfeign.EnableFeignClients;
+import org.springframework.context.annotation.Bean;
+import org.springframework.http.client.OkHttp3ClientHttpRequestFactory;
+import org.springframework.web.client.RestTemplate;
 import springfox.documentation.oas.annotations.EnableOpenApi;
 
+@EnableFeignClients(basePackages = {"com.yanxuexi.ucenter.feignClient"})
 @SpringBootApplication
 @EnableOpenApi
 public class AuthApplication {
@@ -12,4 +17,8 @@ public class AuthApplication {
         SpringApplication.run(AuthApplication.class, args);
     }
 
+    @Bean
+    RestTemplate restTemplate(){
+        return new RestTemplate(new OkHttp3ClientHttpRequestFactory());
+    }
 }

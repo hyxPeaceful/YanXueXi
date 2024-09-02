@@ -10,9 +10,11 @@ import com.yanxuexi.content.model.dto.QueryCourseParamsDto;
 import com.yanxuexi.content.model.po.CourseBase;
 import com.yanxuexi.content.service.CourseBaseInfoService;
 import com.yanxuexi.content.service.CourseCategoryService;
+import com.yanxuexi.content.util.SecurityUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -51,6 +53,8 @@ public class CourseBaseInfoController {
     @ApiOperation(value = "根据课程Id查询课程基本信息")
     @GetMapping("/course/{courseId}")
     public CourseBaseInfoDto getCourseById(@PathVariable Long courseId) {
+        // 获取当前用户身份信息（存于ThreadLocal）
+        SecurityUtil.XcUser xcUser = SecurityUtil.getUser();
         return courseBaseInfoService.getCourseBaseInfo(courseId);
     }
 
