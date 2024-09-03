@@ -22,7 +22,7 @@ public class ResouceServerConfig extends ResourceServerConfigurerAdapter {
 
 
     //资源服务标识
-    public static final String RESOURCE_ID = "yanxuexi";
+    public static final String RESOURCE_ID = "xcWebApp";
 
     @Autowired
     TokenStore tokenStore;

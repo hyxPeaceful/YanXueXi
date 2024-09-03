@@ -47,10 +47,11 @@ public class CourseBaseInfoServiceImpl implements CourseBaseInfoService {
      * @description:    课程分页查询
      * @param pageParams    分页查询参数
      * @param queryCourseParamsDto 查询条件
+     * @param companyId 机构Id
      * @return 查询结果
      */
     @Override
-    public PageResult<CourseBase> queryCourseBaseList(PageParams pageParams, QueryCourseParamsDto queryCourseParamsDto) {
+    public PageResult<CourseBase> queryCourseBaseList(Long companyId, PageParams pageParams, QueryCourseParamsDto queryCourseParamsDto) {
         // 拼接查询条件
         LambdaQueryWrapper<CourseBase> queryWrapper = new LambdaQueryWrapper<>();
         // 根据课程名称模糊查询
@@ -59,7 +60,8 @@ public class CourseBaseInfoServiceImpl implements CourseBaseInfoService {
         queryWrapper.eq(StringUtils.isNotBlank(queryCourseParamsDto.getAuditStatus()), CourseBase::getAuditStatus, queryCourseParamsDto.getAuditStatus());
         // 根据发布状态查询
         queryWrapper.eq(StringUtils.isNotBlank(queryCourseParamsDto.getPublishStatus()), CourseBase::getStatus, queryCourseParamsDto.getPublishStatus());
-
+        // 细腻度权限控制，机构只能查询本机构的课程新型
+        queryWrapper.eq(CourseBase::getCompanyId, companyId);
         // 查询并返回
         Page<CourseBase> courseBasePage = courseBaseMapper.selectPage(new Page<>(pageParams.getPageNo(), pageParams.getPageSize()), queryWrapper);
         return new PageResult<>(courseBasePage.getRecords(), courseBasePage.getTotal(), pageParams.getPageNo(), pageParams.getPageSize());

@@ -1,8 +1,10 @@
 package com.yanxuexi.content.api;
 
 import com.yanxuexi.base.exception.ValidationGroups;
+import com.yanxuexi.base.exception.YanXueXiException;
 import com.yanxuexi.base.model.PageParams;
 import com.yanxuexi.base.model.PageResult;
+import com.yanxuexi.base.utils.StringUtil;
 import com.yanxuexi.content.model.dto.AddCourseDto;
 import com.yanxuexi.content.model.dto.CourseBaseInfoDto;
 import com.yanxuexi.content.model.dto.EditCourseDto;
@@ -14,6 +16,8 @@ import com.yanxuexi.content.util.SecurityUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.AccessDeniedException;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -37,8 +41,11 @@ public class CourseBaseInfoController {
 
     @ApiOperation(value = "课程基本信息分页查询")
     @PostMapping("/course/list")
+    @PreAuthorize("hasAuthority('xc_teachmanager_course_list')")
     public PageResult<CourseBase> list(PageParams pageParams, @RequestBody(required = false) QueryCourseParamsDto queryCourseParams) {
-        PageResult<CourseBase> pageResult = courseBaseInfoService.queryCourseBaseList(pageParams, queryCourseParams);
+        SecurityUtil.XcUser xcUser = SecurityUtil.getUser();
+        String companyId = xcUser.getCompanyId();
+        PageResult<CourseBase> pageResult = courseBaseInfoService.queryCourseBaseList(Long.parseLong(companyId), pageParams, queryCourseParams);
         return pageResult;
     }
 

@@ -1,8 +1,10 @@
 package com.yanxuexi.ucenter.service.impl;
 
 import com.alibaba.fastjson.JSON;
+import com.yanxuexi.ucenter.mapper.XcMenuMapper;
 import com.yanxuexi.ucenter.mapper.XcUserMapper;
 import com.yanxuexi.ucenter.model.dto.AuthParamsDto;
+import com.yanxuexi.ucenter.model.po.XcMenu;
 import com.yanxuexi.ucenter.model.po.XcUserExt;
 import com.yanxuexi.ucenter.service.AuthService;
 import lombok.extern.slf4j.Slf4j;
@@ -13,6 +15,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * @author hyx
@@ -28,6 +32,9 @@ public class UserServiceImpl implements UserDetailsService {
 
     @Autowired
     ApplicationContext applicationContext;
+
+    @Autowired
+    XcMenuMapper xcMenuMapper;
 
     /**
      * @description: 根据账号查询用户信息
@@ -60,7 +67,9 @@ public class UserServiceImpl implements UserDetailsService {
      */
     private UserDetails getUserPrinciple(XcUserExt xcUserExt) {
         // 获取用户信息，封装成UserDetails返回
-        String[] authorities = {"test"}; // 权限暂定为测试
+        // 查询用户权限
+        List<XcMenu> xcMenus = xcMenuMapper.selectPermissionByUserId(xcUserExt.getId());
+        String[] authorities = xcMenus.stream().map(XcMenu::getCode).toArray(String[]::new);
         String password = xcUserExt.getPassword();
         // 封装用户信息，作为JWT的负载部分，去除其中的敏感信息
         xcUserExt.setPassword(null);

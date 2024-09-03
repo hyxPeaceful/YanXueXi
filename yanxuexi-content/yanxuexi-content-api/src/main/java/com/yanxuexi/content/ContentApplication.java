@@ -13,7 +13,7 @@ import springfox.documentation.oas.annotations.EnableOpenApi;
  * @date 2024-06-15 16:19
  **/
 @EnableOpenApi
-@SpringBootApplication(scanBasePackages = {"com.yanxuexi.content", "com.yanxuexi.messagesdk"})
+@SpringBootApplication(scanBasePackages = {"com.yanxuexi.content", "com.yanxuexi.messagesdk", "com.yanxuexi.base"})
 @EnableFeignClients(basePackages={"com.yanxuexi.content.feignclient"})
 public class ContentApplication {
     public static void main(String[] args) {
