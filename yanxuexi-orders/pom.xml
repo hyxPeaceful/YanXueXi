@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <artifactId>yanxuexi-parent</artifactId>
+        <groupId>com.yanxuexi</groupId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../yanxuexi-parent</relativePath>
+    </parent>
+    <artifactId>yanxuexi-orders</artifactId>
+    <packaging>pom</packaging>
+    <modules>
+        <module>yanxuexi-orders-api</module>
+        <module>yanxuexi-orders-service</module>
+        <module>yanxuexi-orders-model</module>
+    </modules>
+</project>

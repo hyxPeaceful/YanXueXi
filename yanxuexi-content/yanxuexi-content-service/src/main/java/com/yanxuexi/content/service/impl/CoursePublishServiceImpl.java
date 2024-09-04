@@ -267,4 +267,14 @@ public class CoursePublishServiceImpl implements CoursePublishService {
             YanXueXiException.cast("保存消息记录失败");
         }
     }
+
+    /**
+     * @description: 根据课程ID查询课程发布信息
+     * @param courseId 课程ID
+     * @return 课程发布信息
+     */
+    public CoursePublish getCoursePublish(Long courseId){
+        CoursePublish coursePublish = coursePublishMapper.selectById(courseId);
+        return coursePublish ;
+    }
 }

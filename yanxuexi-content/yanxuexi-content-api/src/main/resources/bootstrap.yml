@@ -1,8 +1,3 @@
-#server:
-#  servlet:
-#    context-path: /content
-#  port: 63040
-
 #微服务配置
 spring:
   application:
@@ -35,5 +30,8 @@ spring:
           - data-id: feign-${spring.profiles.active}.yaml
             group: yanxuexi-common
             refresh: true  #profiles默认为dev
+          - data-id: rabbitmq-${spring.profiles.active}.yaml
+            group: yanxuexi-common
+            refresh: true
   profiles:
     active: dev # 环境名

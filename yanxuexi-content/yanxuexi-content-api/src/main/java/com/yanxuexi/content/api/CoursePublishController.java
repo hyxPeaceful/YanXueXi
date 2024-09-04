@@ -1,6 +1,7 @@
 package com.yanxuexi.content.api;
 
 import com.yanxuexi.content.model.dto.CoursePreviewDto;
+import com.yanxuexi.content.model.po.CoursePublish;
 import com.yanxuexi.content.service.CoursePublishService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -48,5 +49,13 @@ public class CoursePublishController {
     public void coursePublish(@PathVariable("courseId") Long courseId){
         Long compId = 1232141425L;
         coursePublishService.coursePublish(compId, courseId);
+    }
+
+    @ApiOperation("查询课程发布信息")
+    @ResponseBody
+    @GetMapping("/r/coursepublish/{courseId}")
+    public CoursePublish getCoursepublish(@PathVariable("courseId") Long courseId) {
+        CoursePublish coursePublish = coursePublishService.getCoursePublish(courseId);
+        return coursePublish;
     }
 }
